@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     ImageView imagen;
     SeekBar seekBar;
+    TextView txtLimite;
     private int iWidth = 65;
     private int iHeight = 52;
     float density;
@@ -19,8 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
         density = displayMetrics.densityDpi;
-        imagen = (ImageView) findViewById(R.id.imageView);
-        seekBar = (SeekBar) findViewById(R.id.seekBar);
+        imagen =  findViewById(R.id.imageView);
+        seekBar =  findViewById(R.id.seekBar);
+        txtLimite =  findViewById(R.id.txtLimite);
 
         //Evento Redimensionar pantalla
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -31,6 +34,14 @@ public class MainActivity extends AppCompatActivity {
                 imagen.getLayoutParams().height = (int)alto;
                 imagen.getLayoutParams().width = (int)ancho;
                 imagen.requestLayout();
+
+
+                if(progress==100){
+                    txtLimite.setText("Llegó al limite");
+                }else if(progress!=100){
+                    txtLimite.setText("En progreso: "+progress+" %");
+                }
+
             }
 
             @Override
