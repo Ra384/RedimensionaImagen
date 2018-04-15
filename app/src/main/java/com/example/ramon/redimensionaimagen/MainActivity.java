@@ -6,6 +6,7 @@ import android.util.DisplayMetrics;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     ImageView imagen;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(progress==100){
                     txtLimite.setText("Llegó al limite");
+                    Toast.makeText(MainActivity.this, "Llegó al Limite", Toast.LENGTH_SHORT).show();
                 }else if(progress!=100){
                     txtLimite.setText("En progreso: "+progress+" %");
                 }
